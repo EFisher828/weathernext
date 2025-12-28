@@ -1,0 +1,263 @@
+body {
+    margin: 0;
+    background: #f4f6f9;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #333;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#layout-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left Sidebar */
+#sidebar {
+    width: 360px;
+    min-width: 300px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    background: #1a5fb4;
+    color: white;
+    padding: 16px 20px;
+    text-align: center;
+}
+
+.sidebar-header h1 {
+    margin: 0 0 8px 0;
+    font-size: 1.9rem;
+    line-height: 1.2;
+}
+
+.sidebar-header p {
+    margin: 8px 0 0;
+    opacity: 0.95;
+    font-size: 1.05rem;
+}
+
+.controls-section {
+    padding: 24px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.control-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+}
+
+#cycle-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.cycle-btn {
+    width: 46px;
+    height: 46px;
+    background: #e3e8ee;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.cycle-btn:hover {
+    background: #d0d7e2;
+}
+
+#cycle-select {
+    flex: 1;
+    padding: 11px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.slider-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;  /* Full width on mobile */
+    gap: 12px;
+    width: 100%;
+}
+
+#fhour-slider {
+    flex: 1;
+    height: 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#fhour-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #1a5fb4;
+    cursor: pointer;
+}
+
+#fhour-label {
+    font-size: 19px;
+    font-weight: 600;
+    min-width: 80px;
+    text-align: left;
+}
+
+.sidebar-footer {
+    margin-top: auto;
+    padding: 20px;
+    background: #1a1a1a;
+    color: #ccc;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.sidebar-footer p {
+    margin: 8px 0;
+}
+
+.sidebar-footer a {
+    color: #8ab4f8;
+    text-decoration: none;
+}
+
+.sidebar-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Right Map Area */
+#map-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #e9ecef;
+    min-height: 0; /* Critical fix: allows flex child to shrink below content size */
+}
+
+#map-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px 10px; /* Reduced bottom padding slightly to give room to note */
+    min-height: 0; /* Ensure it can shrink */
+}
+
+#map-image {
+    max-width: 100%;
+    max-height: 100%;
+    border: 3px solid #aaa;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background: white;
+}
+
+.quick-hours {
+    padding-bottom: 16px;
+}
+
+#quick-hour-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+#quick-hour-buttons button {
+    padding: 10px;
+    background: #e3e8ee;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#quick-hour-buttons button:hover {
+    background: #d0d7e2;
+    transform: translateY(-1px);
+}
+
+#quick-hour-buttons button.active {
+    background: #1a5fb4;
+    color: white;
+    border-color: #1a5fb4;
+}
+
+/* Improved visibility for update note */
+.update-note {
+    flex-shrink: 0; /* Don't let it shrink away */
+    text-align: center;
+    /* padding: 18px 40px; */
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #333;
+    /* background: white; */
+    border-radius: 12px;
+    line-height: 1.6;
+    /* box-shadow: 0 4px 12px rgba(0,0,0,0.15); */
+    max-width: 900px;
+    align-self: center;
+    /* border: 1px solid #ddd; */
+}
+
+.update-note a {
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #layout-container {
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    #sidebar {
+        width: 100%;
+        max-height: 45vh;    /* Limits sidebar to ~45% of screen - adjustable if needed */
+        overflow-y: auto;    /* Scroll if content overflows (e.g., many quick buttons) */
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    #map-area {
+        flex: 1;
+        min-height: 55vh;    /* Ensures map gets at least 55% of screen */
+    }
+
+    #map-container {
+        padding: 20px;
+    }
+
+    .controls-section {
+        padding: 20px 16px;
+    }
+
+    #quick-hour-buttons {
+        grid-template-columns: repeat(4, 1fr);  /* More buttons per row on mobile */
+        gap: 8px;
+    }
+
+    #quick-hour-buttons button {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+
+    .update-note {
+        margin: 10px 20px 30px;
+        padding: 12px;
+        font-size: 0.95rem;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+    }
+}

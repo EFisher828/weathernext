@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherNext 2.0 Model Viewer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="layout-container">
+
+        <!-- Left Sidebar -->
+        <aside id="sidebar">
+            <header class="sidebar-header">
+                <h1>WeatherNext 2.0<br>Forecast Viewer</h1>
+            </header>
+
+            <section class="controls-section">
+                <label class="control-label">Model Run (Init Time)</label>
+                <div id="cycle-controls">
+                    <button id="prev-cycle" class="cycle-btn" title="Previous run">←</button>
+                    <select id="cycle-select" title="Select model run"></select>
+                    <button id="next-cycle" class="cycle-btn" title="Next run">→</button>
+                </div>
+            </section>
+
+            <section class="controls-section">
+                <div class="slider-wrapper">
+                  <div id="fhour-label">Valid: loading...</div>
+                  <input type="range" id="fhour-slider" min="6" max="360" step="6" value="6">
+                </div>
+            </section>
+
+            <!-- New: Quick Hour Buttons -->
+            <section class="controls-section quick-hours">
+                <label class="control-label">Quick Forecast Times</label>
+                <div id="quick-hour-buttons">
+                    <button data-fhour="6">+6h</button>
+                    <button data-fhour="24">+1d</button>
+                    <button data-fhour="48">+2d</button>
+                    <button data-fhour="72">+3d</button>
+                    <button data-fhour="96">+4d</button>
+                    <button data-fhour="120">+5d</button>
+                    <button data-fhour="168">+7d</button>
+                    <button data-fhour="240">+10d</button>
+                    <button data-fhour="360">+15d</button>
+                </div>
+            </section>
+
+            <footer class="sidebar-footer">
+                <p>
+                    WeatherNext 2.0 Experimental Data © 2025 Google LLC •
+                    <a href="https://storage.googleapis.com/weathernext-public/terms-of-use.pdf" target="_blank">Terms of Use</a>
+                </p>
+                <p>
+                    Experimental model • Non-commercial personal visualization • No raw data distributed
+                </p>
+            </footer>
+        </aside>
+
+        <!-- Right Map Area -->
+        <main id="map-area">
+            <div id="map-container">
+                <img id="map-image" src="" alt="WeatherNext 2.0 Forecast Map">
+            </div>
+            <p class="update-note">
+                New runs are manually uploaded as time allows. For legends, please visit <a href="https://www.tropicaltidbits.com/analysis/models/" target="_blank">TropicalTidbits.com</a>.
+            </p>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
